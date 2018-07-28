@@ -8,11 +8,12 @@
 
 import UIKit
 
-class MasterTableViewController: UITableViewController {
+class MasterTableViewController: UITableViewController, CarProcessable {
 
-    //MARK: - Private Constants
-    private let downloadService = DownloadService()
+    //MARK: - CarProcessable
+    let downloadService = DownloadService()
     
+    //MARK: - Private Properties
     private var carsArray: [Car] = [] {
         didSet {
             tableView.reloadData()
@@ -23,22 +24,18 @@ class MasterTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         downloadCarList { [weak self] (cars) in
             self?.carsArray = cars
         }
     }
-    
+
+    //MARK: - Private Methods
     private func setupTableView() {
         tableView.register(MasterTableViewCell.nib, forCellReuseIdentifier: MasterTableViewCell.identifier)
-    }
-    
-    private func downloadCarList(completion: @escaping (([Car]) -> Void)) {
-        downloadService.downloadCarList { (cars) in
-            guard let cars = cars else {
-                return //Handle error
-            }
-            completion(cars)
-        }
     }
 
     //MARK: - Table view data source

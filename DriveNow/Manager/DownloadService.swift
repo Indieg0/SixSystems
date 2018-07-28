@@ -17,6 +17,7 @@ final class DownloadService {
     
     //MARK: - Public Constants
     private let downloadManager = DownloadManager()
+    private let fileManager = FileManager.default
     
     //MARK: - Public Constants
     let globalUrlString = "http://www.codetalk.de/"
@@ -24,21 +25,32 @@ final class DownloadService {
     //MARK: - Public Methods
     func downloadCarList(completion: @escaping ([Car]?) -> Void) {
         let urlString = globalUrlString + FileEndpoint.cars.rawValue
-        guard let url = URL(string: urlString) else {
+        
+        guard let url = URL(string: urlString),
+            let destinationURL = fileManager.localFilePath(for: url) else {
             return completion(nil)
         }
-        downloadManager.downloadFileWith(url) { (completed, destinationURL) in
-            guard let destinationURL = destinationURL, completed else { return }
-            DispatchQueue.main.async {
-                do {
-                    let jsonData = try Data(contentsOf: destinationURL)
-                    let cars = try JSONDecoder().decode([Car].self, from: jsonData)
-                    completion(cars)
-                } catch {
-                    completion(nil)
+        
+        do {
+            let jsonData = try Data(contentsOf: destinationURL)
+            let cars = try JSONDecoder().decode([Car].self, from: jsonData)
+            completion(cars)
+        } catch {
+            downloadManager.downloadFileWith(url) { (completed) in
+                guard completed else { return }
+                DispatchQueue.main.async {
+                    do {
+                        let jsonData = try Data(contentsOf: destinationURL)
+                        let cars = try JSONDecoder().decode([Car].self, from: jsonData)
+                        completion(cars)
+                    } catch {
+                        completion(nil)
+                    }
                 }
             }
         }
+        
+        
     }
     
 }

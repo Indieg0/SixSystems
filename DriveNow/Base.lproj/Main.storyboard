@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KeH-BG-NyK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ino-Dv-lQn">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -39,7 +39,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZP8-KF-joE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="-571"/>
+            <point key="canvasLocation" x="1760.8" y="-571.66416791604206"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="JoB-Pf-4De">
@@ -249,12 +249,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HaA-Ic-F4U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1485" y="-567.25352112676057"/>
+            <point key="canvasLocation" x="2424" y="-567.61619190404804"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--List-->
         <scene sceneID="fih-fm-S2l">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KeH-BG-NyK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="List" id="J48-mn-GKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GPK-1O-9dt">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -266,6 +267,54 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CWa-E1-ZHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.2" y="-564.46776611694156"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="Vbg-pw-2fQ">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="aQg-t0-yYx" customClass="MapViewController" customModule="DriveNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dqn-uH-Jts">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Wx0-ki-Qhi">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9Xt-Ju-SjB" firstAttribute="trailing" secondItem="Wx0-ki-Qhi" secondAttribute="trailing" id="Wyz-zK-m9v"/>
+                            <constraint firstItem="9Xt-Ju-SjB" firstAttribute="bottom" secondItem="Wx0-ki-Qhi" secondAttribute="bottom" id="hGE-gi-oyI"/>
+                            <constraint firstItem="Wx0-ki-Qhi" firstAttribute="top" secondItem="9Xt-Ju-SjB" secondAttribute="top" id="ieS-mW-pMN"/>
+                            <constraint firstItem="Wx0-ki-Qhi" firstAttribute="leading" secondItem="9Xt-Ju-SjB" secondAttribute="leading" id="xhU-Re-brb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9Xt-Ju-SjB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="Sxv-xD-mSr"/>
+                    <connections>
+                        <outlet property="mapView" destination="Wx0-ki-Qhi" id="80Y-qO-o0C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mIn-9g-Bic" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047" y="197"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="0TX-yi-h9x">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Ino-Dv-lQn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JYI-rS-x3g">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="KeH-BG-NyK" kind="relationship" relationship="viewControllers" id="ogx-Pk-wph"/>
+                        <segue destination="aQg-t0-yYx" kind="relationship" relationship="viewControllers" id="84b-xJ-yHL"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OCu-EK-DxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="108" y="-564.46776611694156"/>
         </scene>

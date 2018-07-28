@@ -21,6 +21,8 @@
 		6B96DD2C210A97C2000BE9F8 /* MasterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B96DD2A210A97C2000BE9F8 /* MasterTableViewCell.xib */; };
 		6B96DD2E210A9BE3000BE9F8 /* MasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B96DD2D210A9BE3000BE9F8 /* MasterTableViewController.swift */; };
 		6B96DD30210A9C85000BE9F8 /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B96DD2F210A9C85000BE9F8 /* UITableViewCellExtension.swift */; };
+		6BAA597A210C61F200FC6179 /* CarProcessable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAA5979210C61F200FC6179 /* CarProcessable.swift */; };
+		6BAA597E210C68E900FC6179 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAA597D210C68E900FC6179 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		6B96DD2A210A97C2000BE9F8 /* MasterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MasterTableViewCell.xib; sourceTree = "<group>"; };
 		6B96DD2D210A9BE3000BE9F8 /* MasterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterTableViewController.swift; sourceTree = "<group>"; };
 		6B96DD2F210A9C85000BE9F8 /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
+		6BAA5979210C61F200FC6179 /* CarProcessable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarProcessable.swift; sourceTree = "<group>"; };
+		6BAA597D210C68E900FC6179 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		80D93D198D24CA4D50DC561C /* Pods-DriveNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DriveNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DriveNow/Pods-DriveNow.debug.xcconfig"; sourceTree = "<group>"; };
 		FC3F1363FF229ECE8FB29017 /* Pods-DriveNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DriveNow.release.xcconfig"; path = "Pods/Target Support Files/Pods-DriveNow/Pods-DriveNow.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +89,7 @@
 		6B96DD05210A6246000BE9F8 /* DriveNow */ = {
 			isa = PBXGroup;
 			children = (
+				6BAA5978210C61BC00FC6179 /* Protocol */,
 				6B96DD28210A974F000BE9F8 /* Cell */,
 				6B96DD21210A7DB6000BE9F8 /* Manager */,
 				6B96DD1A210A6D2C000BE9F8 /* Extension */,
@@ -112,6 +117,7 @@
 			children = (
 				6B96DD2D210A9BE3000BE9F8 /* MasterTableViewController.swift */,
 				6B96DD1D210A743D000BE9F8 /* DetailViewController.swift */,
+				6BAA597D210C68E900FC6179 /* MapViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -141,6 +147,14 @@
 				6B96DD2A210A97C2000BE9F8 /* MasterTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		6BAA5978210C61BC00FC6179 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				6BAA5979210C61F200FC6179 /* CarProcessable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		7EEF1F1A465A53BEBAB1F0DD /* Pods */ = {
@@ -281,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BAA597E210C68E900FC6179 /* MapViewController.swift in Sources */,
 				6B96DD25210A8FBA000BE9F8 /* FileManagerExtension.swift in Sources */,
 				6B96DD1E210A743D000BE9F8 /* DetailViewController.swift in Sources */,
 				6B96DD2B210A97C2000BE9F8 /* MasterTableViewCell.swift in Sources */,
@@ -289,6 +304,7 @@
 				6B96DD20210A7977000BE9F8 /* Car.swift in Sources */,
 				6B96DD2E210A9BE3000BE9F8 /* MasterTableViewController.swift in Sources */,
 				6B96DD23210A7DCB000BE9F8 /* DownloadManager.swift in Sources */,
+				6BAA597A210C61F200FC6179 /* CarProcessable.swift in Sources */,
 				6B96DD27210A93F6000BE9F8 /* DownloadService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,7 +453,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VX3E6E8RBD;
 				INFOPLIST_FILE = DriveNow/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.sixsystems.DriveNow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -453,7 +472,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VX3E6E8RBD;
 				INFOPLIST_FILE = DriveNow/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.sixsystems.DriveNow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

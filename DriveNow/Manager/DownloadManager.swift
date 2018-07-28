@@ -19,10 +19,10 @@ final class DownloadManager: NSObject, URLSessionDownloadDelegate {
         return URLSession(configuration: config, delegate: self, delegateQueue: OperationQueue.main)
     }()
     
-    fileprivate var completionHandler: ((Bool, URL?) -> Void)?
+    fileprivate var completionHandler: ((Bool) -> Void)?
     
     //MARK: - Public Methods
-    func downloadFileWith(_ url: URL, completion:@escaping (Bool, URL?) -> Void){
+    func downloadFileWith(_ url: URL, completion:@escaping (Bool) -> Void){
         self.completionHandler = completion
         let downloadTask = session.downloadTask(with: url)
         downloadTask.resume()
@@ -37,10 +37,10 @@ final class DownloadManager: NSObject, URLSessionDownloadDelegate {
         try? fileManager.removeItem(at: destinationURL)
         do {
             try fileManager.copyItem(at: location, to: destinationURL)
-            completionHandler?(true, destinationURL)
+            completionHandler?(true)
         } catch {
             print("Could not copy file to disk: \(error.localizedDescription)")
-            completionHandler?(false, nil)
+            completionHandler?(false)
         }
     }
     
